@@ -1,6 +1,7 @@
 <?php
 
 use Inertia\Inertia;
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,5 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Index');
+    return Inertia::render('Index', [
+        'projects' => Project::all(),
+    ]);
 });

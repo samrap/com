@@ -8,7 +8,7 @@
                 <div class="flex flex-wrap -mx-4">
                     <div class="w-full md:w-3/4 px-4">
                         <div class="mb-4">
-                            01 <a href="#" class="uppercase">{{ project.name }}</a>
+                            01 <Link :href="route('projects.show', project.id)" class="uppercase">{{ project.name }}</Link>
                         </div>
                         {{ project.summary }}
                     </div>

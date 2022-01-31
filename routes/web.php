@@ -20,3 +20,10 @@ Route::get('/', function () {
         'projects' => Project::all(),
     ]);
 });
+
+Route::get('/projects/{id}', function ($id) {
+    sleep(2);
+    return Inertia::render('Projects/Show', [
+        'project' => Project::findOrFail($id),
+    ]);
+})->name('projects.show');

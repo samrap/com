@@ -4,7 +4,7 @@
 
         <div class="flex flex-wrap -mx-4">
             <div class="w-full md:w-2/5 p-4">
-                <Link :href="route('projects.show', project.id)">
+                <Link :href="route('projects.show', {'id': project.id, 'slug': project.slug})">
                     <img :src="project.featured_image" alt="">
                 </Link>
             </div>
@@ -12,12 +12,12 @@
                 <div class="flex flex-wrap -mx-4">
                     <div class="w-full md:w-3/4 px-4">
                         <div class="mb-4">
-                            {{ String(project.id).padStart(2, '0') }} <Link :href="route('projects.show', project.id)" class="uppercase">{{ project.name }}</Link>
+                            {{ String(project.id).padStart(2, '0') }} <Link :href="route('projects.show', {'id': project.id, 'slug': project.slug})" class="uppercase">{{ project.name }}</Link>
                         </div>
                         <span v-html="project.summary"></span>
 
                         <br><br>
-                        <Link :href="route('projects.show', project.id)">Read more</Link>
+                        <Link :href="route('projects.show', {'id': project.id, 'slug': project.slug})">Read more</Link>
                     </div>
                     <div class="w-full md:w-1/4 px-4">
                         SJR-PROJ-{{ String(project.id).padStart(2, '0') }} <br />

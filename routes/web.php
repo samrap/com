@@ -24,8 +24,20 @@ Route::get('/', function () {
 Route::get('/projects/{id}', function ($id) {
     $project = Project::findOrFail($id);
 
-    if (Project::where('id', $id + 1)->exists()) {
-        $nextLink = route('projects.show', $id + 1);
+    return redirect()->route('projects.show', [
+        'id' => $id,
+        'slug' => $project->slug,
+    ]);
+});
+
+Route::get('/projects/{id}/{slug}', function ($id) {
+    $project = Project::findOrFail($id);
+
+    if ($next = Project::where('id', $id + 1)->first()) {
+        $nextLink = route('projects.show', [
+            'id' => $id + 1,
+            'slug' => $next->slug,
+        ]);
     } else {
         $nextLink = null;
     }

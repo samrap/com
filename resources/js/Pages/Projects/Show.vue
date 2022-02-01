@@ -5,7 +5,7 @@
             <h1 class="uppercase">{{ String(project.id).padStart(2, '0') }} {{ project.name }}</h1>
         </div>
         <div>
-            <img src="https://via.placeholder.com/1440x1080" alt="">
+            <img :src="project.featured_image" alt="">
         </div>
         <div class="flex flex-wrap my-3">
             <div class="my-3 w-full lg:w-1/3">
@@ -18,9 +18,7 @@
                     <span v-if="project.instagram">IG: <a target="_blank" :href="'https://instagram.com/' + project.instagram">@{{ project.instagram }}</a><br></span>
                 </span>
             </div>
-            <div class="mt-3 w-full lg:w-2/3">
-                {{ project.description }}
-            </div>
+            <div class="mt-3 w-full lg:w-2/3 p-margins" v-html="project.description"></div>
         </div>
 
         <div class="flex flex-wrap w-full">

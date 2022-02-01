@@ -24,3 +24,7 @@ hr {
     background-repeat: repeat-x;
     border: none;
 }
+
+.p-margins p {
+    @apply mb-4;
+}

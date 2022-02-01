@@ -5,7 +5,7 @@
         <div class="flex flex-wrap -mx-4">
             <div class="w-full md:w-2/5 p-4">
                 <Link :href="route('projects.show', project.id)">
-                    <img src="https://via.placeholder.com/1440x1080" alt="">
+                    <img :src="project.featured_image" alt="">
                 </Link>
             </div>
             <div class="w-full md:w-3/5 p-4">

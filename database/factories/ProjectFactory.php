@@ -25,6 +25,14 @@ class ProjectFactory extends Factory
             'name' => $this->faker->name(),
             'summary' => $this->faker->paragraphs(3, true),
             'description' => $this->faker->paragraphs(5, true),
+            'url' => 'https://fiveninesclo.com',
+            'instagram' => 'samrapaport',
+            'featured_image' => 'https://via.placeholder.com/1440x1080',
+            'images' => [
+                ['thumbnail' => 'https://via.placeholder.com/720x540', 'src' => 'https://via.placeholder.com/1440x1080'],
+                ['thumbnail' => 'https://via.placeholder.com/720x540', 'src' => 'https://via.placeholder.com/1440x1080'],
+                ['thumbnail' => 'https://via.placeholder.com/720x540', 'src' => 'https://via.placeholder.com/1440x1080'],
+            ],
         ];
     }
 }

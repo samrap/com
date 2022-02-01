@@ -8,7 +8,7 @@
                         <a class="uppercase" href="/">Sam Rapaport</a>
                     </div>
                     <div class="w-full md:w-1/4 px-4">
-                        <span class="text-gray">LA/GMT</span>
+                        <a class="uppercase" href="/">[INDEX]</a>
                     </div>
                 </div>
 
@@ -28,10 +28,14 @@
                     <p class="mb-6">
                         Looking to create The Next Big Thing&trade;? Let's talk.
                     </p>
-                    <a class="mt-6" href="#">Email</a>
+                    <a class="mt-6" href="mailto:me@samrapaport.com">Email</a>
                     <br />
-                    <a href="#">Instagram</a>
+                    <a href="https://instagram.com/samrapaport" target="_blank">Instagram</a>
                     <hr>
+
+                    <div class="mt-6 uppercase text-xs text-right">
+                        &copy; {{ new Date().getFullYear() }} Sam Rapaport
+                    </div>
                 </div>
             </div>
 
@@ -40,10 +44,20 @@
             </div>
         </div>
     </section>
+
+    <footer class="p-6">
+        <hr>
+        <div>
+            <Link href="/" class="uppercase">Index</Link>
+            <Link v-if="nextLink" :href="nextLink" class="ml-6 uppercase">Next &rarr;</Link>
+        </div>
+    </footer>
 </template>
 
 <script>
 export default {
-
+    props: {
+        nextLink: String,
+    }
 }
 </script>

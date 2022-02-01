@@ -19,6 +19,10 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->text('summary');
             $table->text('description');
+            $table->string('url')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('featured_image');
+            $table->json('images')->nullable();
             $table->timestamps();
         });
     }

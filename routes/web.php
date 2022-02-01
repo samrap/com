@@ -22,8 +22,16 @@ Route::get('/', function () {
 });
 
 Route::get('/projects/{id}', function ($id) {
-    sleep(2);
+    $project = Project::findOrFail($id);
+
+    if (Project::where('id', $id + 1)->exists()) {
+        $nextLink = route('projects.show', $id + 1);
+    } else {
+        $nextLink = null;
+    }
+
     return Inertia::render('Projects/Show', [
-        'project' => Project::findOrFail($id),
+        'project' => $project,
+        'nextLink' => $nextLink,
     ]);
 })->name('projects.show');

@@ -36,9 +36,7 @@
             </div>
 
             <div class="w-full md:w-2/3 px-4">
-                <hr>
                 <slot />
-                <hr>
             </div>
         </div>
     </section>

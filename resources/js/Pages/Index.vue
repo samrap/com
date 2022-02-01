@@ -14,7 +14,7 @@
                         <div class="mb-4">
                             {{ String(project.id).padStart(2, '0') }} <Link :href="route('projects.show', project.id)" class="uppercase">{{ project.name }}</Link>
                         </div>
-                        {{ project.summary }}
+                        <span v-html="project.summary"></span>
 
                         <br><br>
                         <Link :href="route('projects.show', project.id)">Read more</Link>

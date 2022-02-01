@@ -5,10 +5,10 @@
                 <hr>
                 <div class="flex -mx-4">
                     <div class="w-full md:w-3/4 px-4">
-                        <a class="uppercase" href="/">Sam Rapaport</a>
+                        <Link class="uppercase" href="/">Sam Rapaport</Link>
                     </div>
                     <div class="w-full md:w-1/4 px-4">
-                        <a class="uppercase" href="/">[INDEX]</a>
+                        <Link class="uppercase" href="/">[INDEX]</Link>
                     </div>
                 </div>
 

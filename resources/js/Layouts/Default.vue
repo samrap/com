@@ -1,4 +1,6 @@
 <template>
+    <Head />
+
     <section class="mx-auto px-4">
         <div class="flex flex-wrap -mx-4">
             <div class="w-full md:fixed md:top-0 md:right-0 md:w-1/3 md:order-last px-4">

@@ -1,4 +1,6 @@
 <template>
+    <Head :title="project.name.toUpperCase()" />
+
     <div>
         <hr>
         <div class="mb-4">

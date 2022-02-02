@@ -28,3 +28,9 @@ hr {
 .p-margins p {
     @apply mb-4;
 }
+
+@screen 2xl {
+    body {
+        @apply text-lg;
+    }
+}

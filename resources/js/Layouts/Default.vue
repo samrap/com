@@ -11,6 +11,7 @@
                     </div>
                     <div class="w-full md:w-1/4 px-4">
                         <Link class="uppercase" href="/">[INDEX]</Link>
+                        <Link class="uppercase" href="https://blog.samrapaport.com">[BLOG]</Link>
                     </div>
                 </div>
 

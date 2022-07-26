@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return Inertia::render('Index', [
-        'projects' => Project::all(),
+        'projects' => Project::orderBy('sort_order', 'asc')->get(),
     ]);
 });
 
@@ -33,9 +33,9 @@ Route::get('/projects/{id}', function ($id) {
 Route::get('/projects/{id}/{slug}', function ($id) {
     $project = Project::findOrFail($id);
 
-    if ($next = Project::where('id', $id + 1)->first()) {
+    if ($next = Project::where('sort_order', $project->sort_order + 1)->first()) {
         $nextLink = route('projects.show', [
-            'id' => $id + 1,
+            'id' => $next->id,
             'slug' => $next->slug,
         ]);
     } else {

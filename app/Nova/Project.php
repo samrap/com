@@ -8,9 +8,12 @@ use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
 class Project extends Resource
 {
+    use HasSortableRows;
+
     /**
      * The model the resource corresponds to.
      *

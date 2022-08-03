@@ -4,15 +4,12 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\URL;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Trix;
-use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\Image as NovaImage;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
-class Project extends Resource
+class Image extends Resource
 {
     use HasSortableRows;
 
@@ -21,14 +18,14 @@ class Project extends Resource
      *
      * @var string
      */
-    public static $model = \App\Models\Project::class;
+    public static $model = \App\Models\Image::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -37,8 +34,6 @@ class Project extends Resource
      */
     public static $search = [
         'id',
-        'name',
-        'slug',
     ];
 
     /**
@@ -51,21 +46,15 @@ class Project extends Resource
     {
         return [
             ID::make()->sortable(),
-            Image::make('Featured Image', 'featured_image')
+
+            NovaImage::make('Image', 'path')
                 ->disk('public')
                 ->creationRules('required')
                 ->deletable(false),
-            Image::make('Retina Featured Image', 'featured_image_2x')
+            NovaImage::make('Retina Image', 'path_2x')
                 ->disk('public')
                 ->help('Strongly recommended to support high resolution screens'),
-            Text::make('Name'),
-            Trix::make('Summary')->alwaysShow(),
-            Trix::make('Description')->alwaysShow(),
-            URL::make('Website URL', 'url')->displayUsing(fn () => preg_replace('~^https?://~', '', $this->url)),
-            Text::make('Instagram Handle', 'instagram')->displayUsing(function ($handle) {
-                return $handle ? "@{$handle}" : "";
-            }),
-            HasMany::make('Images'),
+            Textarea::make('alt')->rows(2),
         ];
     }
 

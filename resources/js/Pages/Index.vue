@@ -5,7 +5,10 @@
         <div class="flex flex-wrap -mx-4">
             <div class="w-full md:w-2/5 p-4">
                 <Link :href="route('projects.show', {'id': project.id, 'slug': project.slug})">
-                    <img :src="project.featured_image" alt="">
+                    <samrap-img
+                        :src="project.featured_image_resolutions._1x"
+                        :retina="project.featured_image_resolutions._2x">
+                    </samrap-img>
                 </Link>
             </div>
             <div class="w-full md:w-3/5 p-4">

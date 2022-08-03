@@ -7,7 +7,10 @@
             <h1 class="uppercase">{{ String(project.id).padStart(2, '0') }} {{ project.name }}</h1>
         </div>
         <div>
-            <img :src="project.featured_image" alt="">
+            <samrap-img
+                :src="project.featured_image_set._1x"
+                :retina="project.featured_image_set._2x">
+            </samrap-img>
         </div>
         <div class="flex flex-wrap my-3">
             <div class="my-3 w-full lg:w-1/3">

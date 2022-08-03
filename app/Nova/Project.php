@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
@@ -49,6 +50,15 @@ class Project extends Resource
     {
         return [
             ID::make()->sortable(),
+            Image::make('Featured Image', 'featured_image')
+                ->disk('public')
+                ->creationRules('required')
+                ->deletable(false)
+                ->maxWidth(100),
+            Image::make('Retina Featured Image', 'featured_image_2x')
+                ->disk('public')
+                ->maxWidth(100)
+                ->help('Strongly recommended to support high resolution screens'),
             Text::make('Name'),
             Trix::make('Summary')->alwaysShow(),
             Trix::make('Description')->alwaysShow(),

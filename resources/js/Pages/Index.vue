@@ -6,8 +6,8 @@
             <div class="w-full md:w-2/5 p-4">
                 <Link :href="route('projects.show', {'id': project.id, 'slug': project.slug})">
                     <samrap-img
-                        :src="project.featured_image_set._1x"
-                        :retina="project.featured_image_set._2x">
+                        :src="project.featured_image_resolutions._1x"
+                        :retina="project.featured_image_resolutions._2x">
                     </samrap-img>
                 </Link>
             </div>

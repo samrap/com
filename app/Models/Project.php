@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Str;
+use App\Models\Concerns\HasImages;
 use Spatie\EloquentSortable\Sortable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Project extends Model implements Sortable
 {
-    use HasFactory, SortableTrait;
+    use HasFactory, SortableTrait, HasImages;
 
     protected $casts = [
         'images' => 'json',
@@ -28,7 +29,7 @@ class Project extends Model implements Sortable
      *
      * @var array
      */
-    protected $appends = ['featured_image_set'];
+    protected $appends = ['featured_image_resolutions'];
 
     /**
      * The "booted" method of the model.
@@ -43,29 +44,19 @@ class Project extends Model implements Sortable
     }
 
     /**
-     * Get the intro image URL set.
+     * Get the featured image URL resolutions.
      *
      * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */
-    protected function featuredImageSet(): Attribute
+    protected function featuredImageResolutions(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->vueImageSet('featured_image'),
+            get: fn () => $this->getImageResolutions('featured_image'),
         );
     }
 
-    /**
-     * Returns an array of 1x and 2x image URLs for the given 1x image name.
-     *
-     * @param string $name
-     * @return \Illuminate\Support\Collection
-     */
-    protected function vueImageSet(string $name)
+    public function images()
     {
-        return collect(['_1x' => $name, '_2x' => "${name}_2x"])->map(function ($attribute) {
-            return $this->getAttribute($attribute)
-                ? Storage::url($this->getAttribute($attribute))
-                : null;
-        });
+        return $this->hasMany(Image::class)->orderBy('sort_order', 'asc');
     }
 }

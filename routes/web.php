@@ -31,7 +31,7 @@ Route::get('/projects/{id}', function ($id) {
 });
 
 Route::get('/projects/{id}/{slug}', function ($id) {
-    $project = Project::findOrFail($id);
+    $project = Project::with('images')->findOrFail($id);
 
     if ($next = Project::where('sort_order', $project->sort_order + 1)->first()) {
         $nextLink = route('projects.show', [
@@ -43,7 +43,7 @@ Route::get('/projects/{id}/{slug}', function ($id) {
     }
 
     return Inertia::render('Projects/Show', [
-        'project' => $project,
+        'project' => $project->toArray(),
         'nextLink' => $nextLink,
     ]);
 })->name('projects.show');

@@ -8,8 +8,8 @@
         </div>
         <div>
             <samrap-img
-                :src="project.featured_image_set._1x"
-                :retina="project.featured_image_set._2x">
+                :src="project.featured_image_resolutions._1x"
+                :retina="project.featured_image_resolutions._2x">
             </samrap-img>
         </div>
         <div class="flex flex-wrap my-3">
@@ -28,8 +28,12 @@
 
         <div class="flex flex-wrap w-full">
             <div v-for="(image, i) in project.images" :key="i" class="w-1/2 sm:w-1/4 p-2 cursor-pointer">
-                <a :href="image.src" class="glightbox" data-type="image">
-                    <img :src="image.thumbnail" alt="">
+                <a
+                    :href="image.resolutions._1x"
+                    class="glightbox"
+                    data-type="image"
+                    :data-srcset="getSrcSet(image.resolutions._1x, image.resolutions._2x)">
+                    <img :src="image.resolutions._1x" :alt="image.alt">
                 </a>
             </div>
         </div>
@@ -42,6 +46,13 @@ import GLightbox from 'glightbox';
 export default {
     props: {
         project: Object,
+    },
+    methods: {
+        getSrcSet(src, retina) {
+            return retina != null
+                ? [src, retina.concat(' 2x')].join(', ')
+                : null
+        },
     },
     mounted() {
         const gallery = GLightbox({

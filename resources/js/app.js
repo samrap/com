@@ -2,8 +2,10 @@ import { createApp, h } from 'vue'
 import { createInertiaApp, Link } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress'
 import DefaultLayout from './Layouts/Default'
-import Head from './Components/Head'
+import SamrapHead from './Components/Head'
 import SamrapImg from './Components/Img'
+import SamrapContainer from './Components/Container'
+import SvgVue from 'svg-vue3'
 
 createInertiaApp({
     resolve: name => {
@@ -14,8 +16,10 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
         .use(plugin)
+        .use(SvgVue)
         .component('Link', Link)
-        .component('Head', Head)
+        .component('samrap-head', SamrapHead)
+        .component('samrap-container', SamrapContainer)
         .component('samrap-img', SamrapImg)
         .mixin({ methods: { route: window.route } })
         .mount(el)

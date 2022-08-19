@@ -16,34 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Index', [
+    return Inertia::render('Home');
+});
+
+Route::get('/about', function () {
+    return Inertia::render('About');
+});
+
+Route::get('/portfolio', function () {
+    return Inertia::render('Portfolio', [
         'projects' => Project::orderBy('sort_order', 'asc')->get(),
     ]);
 });
-
-Route::get('/projects/{id}', function ($id) {
-    $project = Project::findOrFail($id);
-
-    return redirect()->route('projects.show', [
-        'id' => $id,
-        'slug' => $project->slug,
-    ]);
-});
-
-Route::get('/projects/{id}/{slug}', function ($id) {
-    $project = Project::with('images')->findOrFail($id);
-
-    if ($next = Project::where('sort_order', $project->sort_order + 1)->first()) {
-        $nextLink = route('projects.show', [
-            'id' => $next->id,
-            'slug' => $next->slug,
-        ]);
-    } else {
-        $nextLink = null;
-    }
-
-    return Inertia::render('Projects/Show', [
-        'project' => $project->toArray(),
-        'nextLink' => $nextLink,
-    ]);
-})->name('projects.show');

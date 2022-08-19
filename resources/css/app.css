@@ -5,28 +5,11 @@
 body {
     @apply bg-black;
     @apply font-body;
-    @apply text-sm;
     @apply text-white;
 }
 
 a {
     @apply text-yellow;
-    @apply underline;
-}
-
-hr {
-    @apply my-6;
-
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.4) 60%, rgba(255,255,255,0) 0%);
-    background-position: bottom;
-    background-size: 9px 1px;
-    background-repeat: repeat-x;
-    border: none;
-}
-
-.p-margins p {
-    @apply mb-4;
 }
 
 @screen 2xl {

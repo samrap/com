@@ -24,6 +24,7 @@
         "@inertiajs/inertia-vue3": "^0.6.0",
         "@inertiajs/progress": "^0.2.7",
         "glightbox": "^3.1.0",
+        "laravel-mix-svg-vue": "^0.4.1",
         "vue": "^3.2.29"
     }
 }

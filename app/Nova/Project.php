@@ -57,7 +57,8 @@ class Project extends Resource
                 ->deletable(false),
             Image::make('Retina Featured Image', 'featured_image_2x')
                 ->disk('public')
-                ->help('Strongly recommended to support high resolution screens'),
+                ->help('Strongly recommended to support high resolution screens')
+                ->hideFromIndex(),
             Text::make('Name'),
             Trix::make('Summary')->alwaysShow(),
             Trix::make('Description')->alwaysShow(),

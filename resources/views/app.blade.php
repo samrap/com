@@ -32,15 +32,17 @@
 
         @routes
 
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELF0RDDS9N"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+        @env('production')
+            <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELF0RDDS9N"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
 
-            gtag('config', 'G-ELF0RDDS9N');
-        </script>
+                gtag('config', 'G-ELF0RDDS9N');
+            </script>
+        @endenv
 
         <script src="{{ mix('js/app.js') }}" defer></script>
 

@@ -2,7 +2,7 @@
     <samrap-head :title="project.name.toUpperCase() + ' PROJECT'"></samrap-head>
 
     <section>
-        <header class="mb-4 lg:mb-16 px-4 lg:px-8 text-left">
+        <header class="mx-auto max-w-[1680px] lg:mt-12 mb-4 px-4 lg:px-8 text-left">
             <h1 class="relative z-10 font-bold text-7xl uppercase leading-none">
                 {{ project.name }}
             </h1>

@@ -24,7 +24,15 @@ Route::get('/about', function () {
 });
 
 Route::get('/portfolio', function () {
-    return Inertia::render('Portfolio', [
+    return Inertia::render('Portfolio/Index', [
         'projects' => Project::orderBy('sort_order', 'asc')->get(),
     ]);
 });
+
+Route::get('/portfolio/{id}/{slug}', function ($id) {
+    $project = Project::with('images')->findOrFail($id);
+
+    return Inertia::render('Portfolio/Show', [
+        'project' => $project->toArray(),
+    ]);
+})->name('project.show');

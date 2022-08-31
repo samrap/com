@@ -75,8 +75,9 @@
         <slot></slot>
     </main>
 
-    <footer class="py-8 px-6 text-xs text-center uppercase">
-        Sam Rapaport &copy; {{ new Date().getFullYear() }}
+    <footer class="mt-14 mx-auto py-8 px-10 max-w-sm text-md md:text-lg text-center uppercase font-bold">
+        <svg-vue icon="signature" class="fill-white"></svg-vue>
+        &copy; {{ new Date().getFullYear() }}
     </footer>
 </template>
 

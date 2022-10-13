@@ -36,3 +36,7 @@ Route::get('/portfolio/{id}/{slug}', function ($id) {
         'project' => $project->toArray(),
     ]);
 })->name('project.show');
+
+Route::get('/experience', function () {
+    return Inertia::render('Experience');
+});
